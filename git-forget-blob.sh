@@ -14,7 +14,7 @@ function git-forget-blob()
   test -d .git || { echo "Need to be at the base of a Git repository." && return 1; }
   git repack -Aq
   ls .git/objects/pack/*.idx &>/dev/null || {
-    echo "There is nothing to be forgotten in this repository." && return; 
+    echo "There is nothing to be forgotten in this repository." && return;
   }
   echo "Read blobs..."
   local BLOBS=( $( git verify-pack -v .git/objects/pack/*.idx | grep blob | awk '{ print $1 }' ) )
